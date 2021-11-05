@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
+#include <time.h>
 
 // Enable ECB, CTR and CBC mode. Note this can be done before including aes.h or at compile-time.
 // E.g. with GCC by using the -D flag: gcc -c aes.c -DCBC=0 -DCTR=1 -DECB=1
@@ -36,11 +37,18 @@ int main(void)
     return 0;
 #endif
 
+    clock_t t;
+    t = clock();
+
     exit = test_encrypt_cbc() + test_decrypt_cbc() +
 	test_encrypt_ctr() + test_decrypt_ctr() +
 	test_decrypt_ecb() + test_encrypt_ecb();
     test_encrypt_ecb_verbose();
 
+    t = clock() - t;
+    double time_taken = ((double) t)/CLOCKS_PER_SEC;
+    printf("aes took %f seconds to execute \n", time_taken);
+    
     return exit;
 }
 
