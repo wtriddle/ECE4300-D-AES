@@ -8,3 +8,8 @@ You can test with various image inputs by changing and recompling the code. Some
 
 ## Python Image Encryption
 tests.py tests image encryption and decryption with pillow python library for image loader and an open source aes module. Run tests.py in a python environment with the packages available 
+
+
+## Credits
+Python AES: https://github.com/boppreh/aes <br>
+C AES: https://github.com/kokke/tiny-AES-c
